@@ -47,8 +47,8 @@ GPUContextManager::GPUContextManager()
   errid = clGetPlatformIDs(0, ITK_NULLPTR, &m_NumberOfPlatforms);
   OpenCLCheckError( errid, __FILE__, __LINE__, ITK_LOCATION );
 
-  // Get NVIDIA platform by default
-  m_Platform = OpenCLSelectPlatform("NVIDIA");
+  // Get platform
+  m_Platform = OpenCLSelectPlatform();
   assert(m_Platform != ITK_NULLPTR);
 
   cl_device_type devType = CL_DEVICE_TYPE_GPU;//CL_DEVICE_TYPE_CPU;//

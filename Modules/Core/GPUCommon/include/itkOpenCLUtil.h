@@ -60,7 +60,7 @@ cl_device_id OpenCLGetMaxFlopsDev(cl_context cxGPUContext);
 void OpenCLPrintDeviceInfo(cl_device_id device, bool verbose=false);
 
 /** Find the OpenCL platform that matches the "name" */
-cl_platform_id OpenCLSelectPlatform(const char* name);
+cl_platform_id OpenCLSelectPlatform();
 
 /** Check OpenCL error */
 void OpenCLCheckError(cl_int error, const char* filename="", int lineno=0, const char* location="");
