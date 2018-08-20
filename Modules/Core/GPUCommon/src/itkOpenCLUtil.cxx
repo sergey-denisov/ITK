@@ -248,14 +248,16 @@ cl_platform_id OpenCLSelectPlatform()
 
         // Get OpenCL by priority
         const char* platformNamesByPriority[] = {
-          "NVIDIA", "AMD", "Intel"
+          "nvidia", "amd", "advanced micro devices", "intel"
         };
         for (auto platformName : platformNamesByPriority) {
           if (clSelectedPlatformID != ITK_NULLPTR)
             break;
 
           for (auto& item : platformNameAndIndex) {
-            if (std::string::npos != item.first.find(platformName)) {
+            auto platform = item.first;
+            std::transform(platform.begin(), platform.end(), platform.begin(), ::tolower);
+            if (std::string::npos != platform.find(platformName)) {
               clSelectedPlatformID = clPlatformIDs[item.second];
               break;
             }
